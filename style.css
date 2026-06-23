@@ -1,0 +1,637 @@
+/* ============================================= */
+/*             إعدادات عامة                       */
+/* ============================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f4f8;
+    color: #1a202c;
+    transition: background 0.4s, color 0.4s;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ============================================= */
+/*               الوضع الداكن                     */
+/* ============================================= */
+body.dark-mode {
+    background: #0d1117;
+    color: #e6edf3;
+}
+
+body.dark-mode header {
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(145deg, #0d2b4e, #161b22);
+}
+
+body.dark-mode .about-card,
+body.dark-mode .review-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+}
+
+body.dark-mode .subject-card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    color: #e6edf3;
+}
+
+body.dark-mode .subject-card:hover {
+    background: #1f2937;
+}
+
+body.dark-mode .dropdown-menu {
+    background: #161b22;
+    border: 1px solid #30363d;
+}
+
+body.dark-mode .dropdown-menu li a {
+    color: #e6edf3;
+}
+
+body.dark-mode .dropdown-menu li a:hover {
+    background: #1f2937;
+}
+
+body.dark-mode footer {
+    background: #0d1117;
+    border-top: 1px solid #30363d;
+}
+
+body.dark-mode .login-btn {
+    background: #1f6feb;
+}
+
+body.dark-mode .login-btn:hover {
+    background: #1158c7;
+}
+
+/* ============================================= */
+/*               الهيدر والقوائم                  */
+/* ============================================= */
+header {
+    background: #ffffff;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 10px 0;
+    transition: background 0.4s;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* الشعار */
+.logo h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a365d;
+}
+
+.logo span {
+    color: #e53e3e;
+    background: #fff5f5;
+    padding: 0 8px;
+    border-radius: 8px;
+}
+
+body.dark-mode .logo h1 {
+    color: #f0f6fc;
+}
+
+body.dark-mode .logo span {
+    background: #2d1b1b;
+    color: #f87171;
+}
+
+/* القائمة */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    align-items: center;
+}
+
+.nav-menu > li > a {
+    color: #2d3748;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-menu > li > a:hover {
+    background: #ebf4ff;
+    color: #2b6cb0;
+}
+
+body.dark-mode .nav-menu > li > a {
+    color: #c9d1d9;
+}
+
+body.dark-mode .nav-menu > li > a:hover {
+    background: #1f2937;
+    color: #58a6ff;
+}
+
+/* القوائم المنسدلة */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    min-width: 190px;
+    border-radius: 14px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    list-style: none;
+    padding: 10px 0;
+    z-index: 999;
+    border: 1px solid #edf2f7;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeDown 0.25s ease;
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 22px;
+    color: #2d3748;
+    font-weight: 500;
+    transition: all 0.2s;
+    font-size: 15px;
+}
+
+.dropdown-menu li a:hover {
+    background: #ebf4ff;
+    color: #2b6cb0;
+}
+
+/* ============================================= */
+/*               أزرار تسجيل الدخول               */
+/* ============================================= */
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.login-btn {
+    background: #2b6cb0;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.login-btn:hover {
+    background: #1a4f7a;
+    transform: scale(1.03);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#user-name {
+    font-weight: 700;
+    color: #2b6cb0;
+    font-size: 16px;
+}
+
+body.dark-mode #user-name {
+    color: #58a6ff;
+}
+
+.premium-badge {
+    background: linear-gradient(135deg, #f6ad55, #ed8936);
+    color: #1a202c;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: transform 0.3s;
+}
+
+.premium-badge:hover {
+    transform: scale(1.05);
+}
+
+/* ============================================= */
+/*               زر الوضع الداكن                  */
+/* ============================================= */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #2d3748;
+    transition: transform 0.3s;
+    padding: 5px 10px;
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg) scale(1.1);
+}
+
+body.dark-mode .theme-btn {
+    color: #f6ad55;
+}
+
+/* ============================================= */
+/*               القسم الترحيبي                   */
+/* ============================================= */
+.hero {
+    background: linear-gradient(145deg, #1a365d, #2b6cb0);
+    color: white;
+    padding: 90px 0 70px;
+    text-align: center;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 50px;
+    box-shadow: 0 10px 40px rgba(43, 108, 176, 0.25);
+}
+
+.hero h2 {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.hero h2 span {
+    color: #fbd38d;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0 15px;
+    border-radius: 12px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 8px;
+    opacity: 0.92;
+}
+
+.hero .btn-primary {
+    display: inline-block;
+    background: #f6ad55;
+    color: #1a202c;
+    padding: 14px 45px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 20px;
+    margin-top: 25px;
+    transition: all 0.3s;
+    box-shadow: 0 8px 25px rgba(246, 173, 85, 0.4);
+}
+
+.hero .btn-primary:hover {
+    background: #ed8936;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(246, 173, 85, 0.5);
+}
+
+/* ============================================= */
+/*               أقسام الموقع                     */
+/* ============================================= */
+.about,
+.reviews,
+.subjects-highlight {
+    padding: 60px 0;
+}
+
+.about h2,
+.reviews h2,
+.subjects-highlight h2 {
+    text-align: center;
+    font-size: 34px;
+    font-weight: 800;
+    margin-bottom: 45px;
+    color: #1a365d;
+}
+
+body.dark-mode .about h2,
+body.dark-mode .reviews h2,
+body.dark-mode .subjects-highlight h2 {
+    color: #f0f6fc;
+}
+
+.about h2 i,
+.reviews h2 i,
+.subjects-highlight h2 i {
+    color: #2b6cb0;
+    margin-left: 10px;
+}
+
+/* ============================================= */
+/*               بطاقات "عن الموقع"               */
+/* ============================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background: #ffffff;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+    border-right: 6px solid #2b6cb0;
+}
+
+.about-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+}
+
+.about-card.highlight {
+    border-right-color: #f6ad55;
+    background: #fffbeb;
+}
+
+body.dark-mode .about-card.highlight {
+    background: #1f2937;
+    border-right-color: #f6ad55;
+}
+
+.about-card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #1a365d;
+}
+
+body.dark-mode .about-card h3 {
+    color: #f0f6fc;
+}
+
+.stars {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #ecc94b;
+}
+
+.stars span {
+    font-size: 16px;
+    color: #4a5568;
+    margin-right: 8px;
+}
+
+body.dark-mode .stars span {
+    color: #c9d1d9;
+}
+
+/* ============================================= */
+/*               التقييمات                        */
+/* ============================================= */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.review-card {
+    background: #ffffff;
+    padding: 28px 25px;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid #2b6cb0;
+    transition: all 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.review-card p {
+    font-size: 17px;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: #2d3748;
+}
+
+body.dark-mode .review-card p {
+    color: #e6edf3;
+}
+
+.review-card span {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+}
+
+body.dark-mode .review-card span {
+    color: #8b949e;
+}
+
+/* ============================================= */
+/*               المواد العلمية                   */
+/* ============================================= */
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+}
+
+.subject-card {
+    background: #ffffff;
+    padding: 30px 15px;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.3s;
+    cursor: default;
+    border-bottom: 5px solid #2b6cb0;
+}
+
+.subject-card i {
+    display: block;
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+/* ألوان خاصة بكل مادة */
+.subject-card.physics {
+    border-bottom-color: #3182ce;
+}
+.subject-card.physics i {
+    color: #3182ce;
+}
+
+.subject-card.chemistry {
+    border-bottom-color: #38a169;
+}
+.subject-card.chemistry i {
+    color: #38a169;
+}
+
+.subject-card.biology {
+    border-bottom-color: #d53f8c;
+}
+.subject-card.biology i {
+    color: #d53f8c;
+}
+
+.subject-card.science {
+    border-bottom-color: #dd6b20;
+}
+.subject-card.science i {
+    color: #dd6b20;
+}
+
+.subject-card.environmental {
+    border-bottom-color: #2b6cb0;
+}
+.subject-card.environmental i {
+    color: #2b6cb0;
+}
+
+.subject-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+}
+
+body.dark-mode .subject-card:hover {
+    box-shadow: 0 12px 40px rgba(255, 255, 255, 0.05);
+}
+
+/* ============================================= */
+/*               التذييل                          */
+/* ============================================= */
+footer {
+    background: #1a202c;
+    color: #a0aec0;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 4px 0;
+    font-size: 15px;
+}
+
+footer p:first-child {
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
+/* ============================================= */
+/*               استجابة للشاشات                  */
+/* ============================================= */
+@media (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .auth-section {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 50px 0 40px;
+    }
+
+    .hero h2 {
+        font-size: 26px;
+    }
+
+    .about-grid,
+    .reviews-grid,
+    .subjects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        padding-right: 20px;
+    }
+
+    body.dark-mode .dropdown-menu {
+        background: transparent;
+    }
+
+    .dropdown-menu li a {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+}

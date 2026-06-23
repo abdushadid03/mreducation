@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>الصفوف الدراسية - MR التعليمية</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        .page-header {
+            background: linear-gradient(145deg, #1a365d, #2b6cb0);
+            color: white;
+            padding: 60px 0 50px;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 50px;
+        }
+        .page-header h2 {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .page-header h2 span {
+            color: #fbd38d;
+        }
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .subjects-container {
+            max-width: 1100px;
+            margin: 0 auto 60px;
+            padding: 0 25px;
+        }
+        
+        .subjects-grid-new {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        
+        .subject-card-new {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            border-bottom: 6px solid #2b6cb0;
+        }
+        
+        .subject-card-new:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .subject-card-new i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .subject-card-new h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1a365d;
+        }
+        
+        .subject-card-new p {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 15px;
+        }
+        
+        .free-badge {
+            display: inline-block;
+            background: #c6f6d5;
+            color: #276749;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        .subject-card-new.physics { border-bottom-color: #3182ce; }
+        .subject-card-new.physics i { color: #3182ce; }
+        
+        .subject-card-new.chemistry { border-bottom-color: #38a169; }
+        .subject-card-new.chemistry i { color: #38a169; }
+        
+        .subject-card-new.biology { border-bottom-color: #d53f8c; }
+        .subject-card-new.biology i { color: #d53f8c; }
+        
+        .subject-card-new.science { border-bottom-color: #dd6b20; }
+        .subject-card-new.science i { color: #dd6b20; }
+        
+        .subject-card-new.environmental { border-bottom-color: #2b6cb0; }
+        .subject-card-new.environmental i { color: #2b6cb0; }
+        
+        body.dark-mode .subject-card-new {
+            background: #161b22;
+            border: 1px solid #30363d;
+        }
+        
+        body.dark-mode .subject-card-new h3 {
+            color: #f0f6fc;
+        }
+        
+        @media (max-width: 600px) {
+            .page-header h2 { font-size: 28px; }
+            .subjects-grid-new { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;"><h1>MR <span>التعليمية</span></h1></a>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-graduation-cap"></i> الصفوف <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="classes.html?grade=5">الصف الخامس</a></li>
+                        <li><a href="classes.html?grade=6">الصف السادس</a></li>
+                        <li><a href="classes.html?grade=7">الصف السابع</a></li>
+                        <li><a href="classes.html?grade=8">الصف الثامن</a></li>
+                        <li><a href="classes.html?grade=9">الصف التاسع</a></li>
+                        <li><a href="classes.html?grade=10">الصف العاشر</a></li>
+                        <li><a href="classes.html?grade=11">الصف الحادي عشر</a></li>
+                        <li><a href="classes.html?grade=12">الصف الثاني عشر</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="subjects.html?subject=physics">الفيزياء</a></li>
+                        <li><a href="subjects.html?subject=chemistry">الكيمياء</a></li>
+                        <li><a href="subjects.html?subject=biology">الأحياء</a></li>
+                        <li><a href="subjects.html?subject=science">العلوم</a></li>
+                        <li><a href="subjects.html?subject=environmental">العلوم البيئية</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#about">عن الموقع</a></li>
+                <li><a href="index.html#reviews">التقييمات</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+        <div class="auth-section">
+            <a href="login.html" class="login-btn" id="login-btn">
+                <i class="fas fa-user"></i> تسجيل الدخول
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="page-header">
+        <div class="container">
+            <h2 id="pageTitle">اختر <span>المادة الدراسية</span></h2>
+            <p>جميع الدروس والامتحانات متاحة مجاناً</p>
+        </div>
+    </div>
+
+    <div class="subjects-container">
+        <div class="subjects-grid-new" id="subjectsGrid"></div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 MR التعليمية - جميع الحقوق محفوظة</p>
+        <p>سلطنة عمان</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // تحديث: الصف 12 لا يحتوي على العلوم
+    const subjectsByGrade = {
+        5: ['science'],
+        6: ['science'],
+        7: ['science'],
+        8: ['science'],
+        9: ['physics', 'chemistry', 'biology'],
+        10: ['physics', 'chemistry', 'biology'],
+        11: ['physics', 'chemistry', 'biology'],
+        12: ['physics', 'chemistry', 'biology', 'environmental'] // تم إزالة العلوم
+    };
+
+    const subjectDetails = {
+        physics: { icon: 'fas fa-atom', name: 'الفيزياء', desc: 'شرح الوحدات + حل الامتحانات', class: 'physics' },
+        chemistry: { icon: 'fas fa-flask', name: 'الكيمياء', desc: 'شرح الوحدات + حل الامتحانات', class: 'chemistry' },
+        biology: { icon: 'fas fa-dna', name: 'الأحياء', desc: 'شرح الوحدات + حل الامتحانات', class: 'biology' },
+        science: { icon: 'fas fa-leaf', name: 'العلوم', desc: 'شرح الوحدات + حل الامتحانات', class: 'science' },
+        environmental: { icon: 'fas fa-globe-asia', name: 'العلوم البيئية', desc: 'شرح الوحدات + حل الامتحانات', class: 'environmental' }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const grade = parseInt(params.get('grade'));
+
+    if (grade) {
+        document.getElementById('pageTitle').innerHTML = `الصف <span>${grade}</span> - اختر المادة`;
+    }
+
+    const subjects = subjectsByGrade[grade] || ['science'];
+    const grid = document.getElementById('subjectsGrid');
+
+    subjects.forEach(subjectKey => {
+        const s = subjectDetails[subjectKey];
+        const card = document.createElement('a');
+        card.href = `subjects.html?subject=${subjectKey}&grade=${grade}`;
+        card.className = `subject-card-new ${s.class}`;
+        card.innerHTML = `
+            <i class="${s.icon}"></i>
+            <h3>${s.name}</h3>
+            <p>${s.desc}</p>
+            <span class="free-badge"><i class="fas fa-check-circle"></i> مجاني</span>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+
+</body>
+</html>

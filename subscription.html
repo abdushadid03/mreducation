@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>الاشتراك المميز - MR التعليمية</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        .subscription-container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+        
+        .subscription-box {
+            background: white;
+            padding: 45px 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subscription-box h2 {
+            text-align: center;
+            color: #1a365d;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 25px;
+        }
+        
+        .price-box {
+            text-align: center;
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 30px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            border: 3px solid #f6ad55;
+        }
+        
+        .price-box .amount {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a365d;
+        }
+        
+        .price-box .period {
+            color: #718096;
+            font-size: 18px;
+            margin-top: 5px;
+        }
+        
+        .features-list {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .features-list strong {
+            display: block;
+            color: #1a365d;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .features-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            padding: 10px 0;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .features-list li i {
+            color: #38a169;
+            font-size: 18px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #f6ad55;
+            box-shadow: 0 0 0 3px rgba(246, 173, 85, 0.1);
+        }
+        
+        .form-group input[readonly] {
+            background: #f7fafc;
+            cursor: not-allowed;
+        }
+        
+        .form-group select {
+            background: white;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d3748' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            padding-left: 40px;
+        }
+        
+        /* اختيار الصفوف */
+        .grade-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .grade-option {
+            position: relative;
+        }
+        
+        .grade-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .grade-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            background: white;
+            min-height: 100px;
+        }
+        
+        .grade-option label:hover {
+            border-color: #f6ad55;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .grade-option input[type="radio"]:checked + label {
+            border-color: #f6ad55;
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            box-shadow: 0 5px 20px rgba(246, 173, 85, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .grade-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #2b6cb0;
+        }
+        
+        .grade-name {
+            font-weight: 800;
+            color: #1a365d;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .grade-desc {
+            font-size: 11px;
+            color: #718096;
+        }
+        
+        .whatsapp-btn {
+            width: 100%;
+            padding: 18px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .info-box {
+            background: #ebf8ff;
+            border: 2px solid #4299e1;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .info-box i {
+            font-size: 32px;
+            color: #4299e1;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: #2b6cb0;
+            font-size: 15px;
+            margin: 5px 0;
+        }
+        
+        .grades-notice {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 2px solid #f6ad55;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #744210;
+            font-weight: 600;
+        }
+        
+        .grades-notice i {
+            font-size: 24px;
+            color: #f6ad55;
+        }
+        
+        /* الوضع الداكن */
+        body.dark-mode .subscription-box {
+            background: #161b22;
+        }
+        
+        body.dark-mode .subscription-box h2 {
+            color: #f0f6fc;
+        }
+        
+        body.dark-mode .features-list {
+            background: #0d1117;
+        }
+        
+        body.dark-mode .features-list strong {
+            color: #f0f6fc;
+        }
+        
+        body.dark-mode .form-group label {
+            color: #c9d1d9;
+        }
+        
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group select {
+            background: #0d1117;
+            border-color: #30363d;
+            color: #e6edf3;
+        }
+        
+        body.dark-mode .form-group input[readonly] {
+            background: #1a202c;
+        }
+        
+        body.dark-mode .form-group select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23e6edf3' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        }
+        
+        body.dark-mode .grade-option label {
+            background: #0d1117;
+            border-color: #30363d;
+        }
+        
+        body.dark-mode .grade-option label:hover {
+            border-color: #f6ad55;
+        }
+        
+        body.dark-mode .grade-option input[type="radio"]:checked + label {
+            background: linear-gradient(135deg, #2d2006, #3d2b0a);
+            border-color: #f6ad55;
+        }
+        
+        body.dark-mode .grade-name {
+            color: #f0f6fc;
+        }
+        
+        body.dark-mode .grade-icon {
+            color: #58a6ff;
+        }
+        
+        body.dark-mode .info-box {
+            background: #1a365d;
+            border-color: #4299e1;
+        }
+        
+        body.dark-mode .info-box p {
+            color: #90cdf4;
+        }
+        
+        body.dark-mode .grades-notice {
+            background: linear-gradient(135deg, #2d2006, #3d2b0a);
+            border-color: #f6ad55;
+            color: #fbd38d;
+        }
+        
+        @media (max-width: 600px) {
+            .subscription-box { padding: 30px 20px; }
+            .price-box .amount { font-size: 36px; }
+            .grade-selector { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;"><h1>MR <span>التعليمية</span></h1></a>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="subjects.html">الدروس</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+    </div>
+</header>
+
+<div class="subscription-container">
+    <div class="subscription-box">
+        <h2><i class="fas fa-crown"></i> الاشتراك المميز</h2>
+        
+        <!-- تنبيه الصفوف -->
+        <div class="grades-notice">
+            <i class="fas fa-graduation-cap"></i>
+            <span>الحصص المباشرة متاحة للصفوف من <strong>9 إلى 12</strong> فقط</span>
+        </div>
+        
+        <div class="price-box">
+            <div class="amount">10 ر.ع</div>
+            <div class="period">اشتراك شهري</div>
+        </div>
+        
+        <div class="features-list">
+            <strong>ماذا ستحصل عليه؟</strong>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> حصص أونلاين مباشرة في الفيزياء والعلوم</li>
+                <li><i class="fas fa-check-circle"></i> إمكانية ترك أسئلة للمعلم</li>
+                <li><i class="fas fa-check-circle"></i> مسائل وامتحانات خاصة بعد كل حصة</li>
+                <li><i class="fas fa-check-circle"></i> جدول مواعيد الحصص</li>
+                <li><i class="fas fa-check-circle"></i> دخول جروب المميزين على الواتساب</li>
+            </ul>
+        </div>
+        
+        <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p><strong>طريقة الاشتراك:</strong></p>
+            <p>املأ البيانات أدناه ثم اضغط على زر الواتساب</p>
+            <p>سيتم التواصل معك لإتمام الدفع وإدخالك جروب المميزين</p>
+        </div>
+        
+        <form id="subscriptionForm">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> الاسم</label>
+                <input type="text" id="subName" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
+                <input type="email" id="subEmail" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> رقم الهاتف <span style="color: #e53e3e;">*</span></label>
+                <input type="tel" id="subPhone" placeholder="9XXXXXXX" required>
+            </div>
+            
+            <!-- اختيار الصف الدراسي -->
+            <div class="form-group">
+                <label><i class="fas fa-graduation-cap"></i> الصف الدراسي <span style="color: #e53e3e;">*</span></label>
+                <div class="grade-selector">
+                    <div class="grade-option">
+                        <input type="radio" id="grade9" name="grade" value="التاسع" required>
+                        <label for="grade9">
+                            <span class="grade-icon"><i class="fas fa-school"></i></span>
+                            <span class="grade-name">الصف التاسع</span>
+                            <span class="grade-desc">الصف التاسع</span>
+                        </label>
+                    </div>
+                    <div class="grade-option">
+                        <input type="radio" id="grade10" name="grade" value="العاشر">
+                        <label for="grade10">
+                            <span class="grade-icon"><i class="fas fa-school"></i></span>
+                            <span class="grade-name">الصف العاشر</span>
+                            <span class="grade-desc">الصف العاشر</span>
+                        </label>
+                    </div>
+                    <div class="grade-option">
+                        <input type="radio" id="grade11" name="grade" value="الحادي عشر">
+                        <label for="grade11">
+                            <span class="grade-icon"><i class="fas fa-school"></i></span>
+                            <span class="grade-name">الصف الحادي عشر</span>
+                            <span class="grade-desc">الصف الحادي عشر</span>
+                        </label>
+                    </div>
+                    <div class="grade-option">
+                        <input type="radio" id="grade12" name="grade" value="الثاني عشر">
+                        <label for="grade12">
+                            <span class="grade-icon"><i class="fas fa-school"></i></span>
+                            <span class="grade-name">الصف الثاني عشر</span>
+                            <span class="grade-desc">الصف الثاني عشر</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#" class="whatsapp-btn" onclick="sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                إرسال عبر الواتساب
+            </a>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 MR التعليمية - جميع الحقوق محفوظة</p>
+        <p>سلطنة عمان</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        const loggedName = localStorage.getItem('loggedUser');
+        const loggedEmail = localStorage.getItem('loggedEmail');
+        
+        if (loggedName && loggedEmail) {
+            document.getElementById('subName').value = loggedName;
+            document.getElementById('subEmail').value = loggedEmail;
+        } else {
+            showMessage('يرجى تسجيل الدخول أولاً', 'error');
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+    });
+    
+    function sendToWhatsApp() {
+        const name = document.getElementById('subName').value;
+        const email = document.getElementById('subEmail').value;
+        const phone = document.getElementById('subPhone').value;
+        const gradeElement = document.querySelector('input[name="grade"]:checked');
+        
+        if (!phone) {
+            showMessage('يرجى إدخال رقم الهاتف', 'error');
+            return;
+        }
+        
+        if (!gradeElement) {
+            showMessage('يرجى اختيار صفك الدراسي', 'error');
+            return;
+        }
+        
+        const grade = gradeElement.value;
+        const whatsappNumber = '96899841702'; // ضع رقمك هنا
+        
+        const message = `*طلب اشتراك مميز - MR التعليمية*%0A%0A` +
+                       `*الاسم:* ${name}%0A` +
+                       `*البريد الإلكتروني:* ${email}%0A` +
+                       `*رقم الهاتف:* ${phone}%0A` +
+                       `*الصف الدراسي:* ${grade}%0A%0A` +
+                       `أرغب في الاشتراك في الحصص الأونلاين المميزة`;
+        
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${message}`;
+        
+        showMessage('جاري التحويل إلى الواتساب...', 'success');
+        
+        setTimeout(() => {
+            window.open(whatsappURL, '_blank');
+        }, 1500);
+    }
+</script>
+
+</body>
+</html>

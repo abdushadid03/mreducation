@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>الفيديو غير متوفر - MR التعليمية</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css"/>
+    
+    <style>
+        .unavailable-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 25px;
+        }
+        
+        .unavailable-box {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .unavailable-icon {
+            font-size: 80px;
+            color: #f6ad55;
+            margin-bottom: 25px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .unavailable-box h2 {
+            color: #1a365d;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        
+        .unavailable-box .subtitle {
+            color: #718096;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .video-info {
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: right;
+        }
+        
+        .video-info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .video-info-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .video-info-item i {
+            color: #2b6cb0;
+            font-size: 20px;
+            width: 24px;
+        }
+        
+        .video-info-item strong {
+            color: #2d3748;
+            min-width: 100px;
+        }
+        
+        .video-info-item span {
+            color: #4a5568;
+            font-weight: 600;
+        }
+        
+        .notify-box {
+            background: linear-gradient(135deg, #ebf8ff, #bee3f8);
+            border: 2px solid #4299e1;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .notify-box i {
+            font-size: 32px;
+            color: #4299e1;
+            margin-bottom: 10px;
+        }
+        
+        .notify-box p {
+            color: #2b6cb0;
+            font-size: 15px;
+            margin: 5px 0;
+        }
+        
+        .btn-back {
+            display: inline-block;
+            background: #2b6cb0;
+            color: white;
+            padding: 14px 35px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .btn-back:hover {
+            background: #1a4f7a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(43, 108, 176, 0.3);
+        }
+        
+        body.dark-mode .unavailable-box {
+            background: #161b22;
+        }
+        
+        body.dark-mode .unavailable-box h2 {
+            color: #f0f6fc;
+        }
+        
+        body.dark-mode .video-info {
+            background: #0d1117;
+        }
+        
+        body.dark-mode .video-info-item {
+            border-bottom-color: #30363d;
+        }
+        
+        body.dark-mode .video-info-item strong {
+            color: #f0f6fc;
+        }
+        
+        body.dark-mode .video-info-item span {
+            color: #c9d1d9;
+        }
+        
+        body.dark-mode .notify-box {
+            background: linear-gradient(135deg, #1a365d, #2c5282);
+            border-color: #4299e1;
+        }
+        
+        body.dark-mode .notify-box p {
+            color: #90cdf4;
+        }
+        
+        @media (max-width: 600px) {
+            .unavailable-box { padding: 40px 25px; }
+            .unavailable-icon { font-size: 60px; }
+            .unavailable-box h2 { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <a href="index.html" style="text-decoration:none;"><h1>MR <span>التعليمية</span></h1></a>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-graduation-cap"></i> الصفوف <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="classes.html?grade=5">الصف الخامس</a></li>
+                        <li><a href="classes.html?grade=6">الصف السادس</a></li>
+                        <li><a href="classes.html?grade=7">الصف السابع</a></li>
+                        <li><a href="classes.html?grade=8">الصف الثامن</a></li>
+                        <li><a href="classes.html?grade=9">الصف التاسع</a></li>
+                        <li><a href="classes.html?grade=10">الصف العاشر</a></li>
+                        <li><a href="classes.html?grade=11">الصف الحادي عشر</a></li>
+                        <li><a href="classes.html?grade=12">الصف الثاني عشر</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+    </div>
+</header>
+
+<div class="unavailable-container">
+    <div class="unavailable-box">
+        <div class="unavailable-icon">
+            <i class="fas fa-clock"></i>
+        </div>
+        
+        <h2>الفيديو غير متوفر حالياً</h2>
+        <p class="subtitle">
+            نعتذر عن عدم توفر هذا الفيديو في الوقت الحالي<br>
+            سيتم إضافته قريباً إن شاء الله
+        </p>
+        
+        <div class="video-info" id="videoInfo">
+            <!-- سيتم ملؤها بالجافاسكريبت -->
+        </div>
+        
+        <div class="notify-box">
+            <i class="fas fa-bell"></i>
+            <p><strong>تنبيه:</strong> يمكنك متابعة الموقع ليصلك الجديد</p>
+            <p>أو تواصل معنا للاستفسار عن موعد توفر الفيديو</p>
+        </div>
+        
+        <a href="javascript:history.back()" class="btn-back">
+            <i class="fas fa-arrow-right"></i> العودة للصفحة السابقة
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p>© 2026 MR التعليمية - جميع الحقوق محفوظة</p>
+        <p>سلطنة عمان</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // قراءة البيانات من الرابط
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('subject');
+    const grade = params.get('grade');
+    const type = params.get('type'); // lesson أو exam
+    
+    const subjectNames = {
+        physics: 'الفيزياء',
+        chemistry: 'الكيمياء',
+        biology: 'الأحياء',
+        science: 'العلوم',
+        environmental: 'العلوم البيئية'
+    };
+    
+    const gradeNames = {
+        5: 'الخامس',
+        6: 'السادس',
+        7: 'السابع',
+        8: 'الثامن',
+        9: 'التاسع',
+        10: 'العاشر',
+        11: 'الحادي عشر',
+        12: 'الثاني عشر'
+    };
+    
+    // عرض معلومات الفيديو
+    const infoContainer = document.getElementById('videoInfo');
+    infoContainer.innerHTML = `
+        <div class="video-info-item">
+            <i class="fas fa-flask"></i>
+            <strong>المادة:</strong>
+            <span>${subjectNames[subject] || 'غير محدد'}</span>
+        </div>
+        <div class="video-info-item">
+            <i class="fas fa-graduation-cap"></i>
+            <strong>الصف:</strong>
+            <span>الصف ${gradeNames[grade] || grade || 'غير محدد'}</span>
+        </div>
+        <div class="video-info-item">
+            <i class="fas fa-video"></i>
+            <strong>النوع:</strong>
+            <span>${type === 'exam' ? 'حل امتحانات' : 'درس'}</span>
+        </div>
+    `;
+</script>
+
+</body>
+</html>
