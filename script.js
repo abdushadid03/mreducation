@@ -104,3 +104,30 @@ function embedYouTube(videoId, containerId) {
         `;
     }
 }
+// =============================================
+//           قائمة الجوال
+// =============================================
+function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    navMenu.classList.toggle('active');
+}
+
+// إغلاق القائمة عند الضغط خارجها
+document.addEventListener('click', function(event) {
+    const navMenu = document.getElementById('navMenu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    if (navMenu && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        navMenu.classList.remove('active');
+    }
+});
+
+// إغلاق القائمة عند الضغط على رابط
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu) {
+            navMenu.classList.remove('active');
+        }
+    });
+});

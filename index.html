@@ -22,13 +22,19 @@
 
         <!-- الشعار -->
         <div class="logo">
-            <h1>MR <span>التعليمية</span></h1>
+            <a href="index.html" style="text-decoration:none;">
+                <h1>MR<span>التعليمية</span></h1>
+            </a>
         </div>
+
+        <!-- زر القائمة للجوال -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
 
         <!-- القوائم الرئيسية -->
         <nav>
-            <ul class="nav-menu">
-                <!-- قائمة الصفوف -->
+            <ul class="nav-menu" id="navMenu">
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-graduation-cap"></i> الصفوف <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
@@ -43,7 +49,6 @@
                     </ul>
                 </li>
 
-                <!-- قائمة المواد -->
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">

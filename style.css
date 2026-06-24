@@ -106,18 +106,29 @@ header {
     gap: 12px;
 }
 
-/* الشعار */
+/* الشعار - إصلاح الفصل */
+.logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
 .logo h1 {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
     color: #1a365d;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .logo span {
     color: #e53e3e;
     background: #fff5f5;
-    padding: 0 8px;
+    padding: 2px 8px;
     border-radius: 8px;
+    margin-right: 4px;
 }
 
 body.dark-mode .logo h1 {
@@ -127,6 +138,26 @@ body.dark-mode .logo h1 {
 body.dark-mode .logo span {
     background: #2d1b1b;
     color: #f87171;
+}
+
+/* زر القائمة للجوال */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #2d3748;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+body.dark-mode .menu-toggle {
+    color: #e6edf3;
 }
 
 /* القائمة */
@@ -508,7 +539,6 @@ body.dark-mode .review-card span {
     margin-bottom: 12px;
 }
 
-/* ألوان خاصة بكل مادة */
 .subject-card.physics {
     border-bottom-color: #3182ce;
 }
@@ -575,63 +605,151 @@ footer p:first-child {
 }
 
 /* ============================================= */
-/*               استجابة للشاشات                  */
+/*          📱 استجابة للشاشات الصغيرة (الجوال)   */
 /* ============================================= */
-@media (max-width: 992px) {
+@media (max-width: 768px) {
+    /* تصغير الهيدر */
+    header {
+        padding: 8px 0;
+    }
+    
     .header-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 0 15px;
     }
-
+    
+    /* تصغير الشعار */
+    .logo h1 {
+        font-size: 18px;
+    }
+    
+    .logo span {
+        font-size: 16px;
+        padding: 2px 6px;
+    }
+    
+    /* إظهار زر القائمة */
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+    
+    /* إخفاء القائمة الافتراضية */
     .nav-menu {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-radius: 0 0 15px 15px;
+        gap: 5px;
+        z-index: 998;
     }
-
-    .auth-section {
-        justify-content: center;
-        flex-wrap: wrap;
+    
+    body.dark-mode .nav-menu {
+        background: #161b22;
     }
-
-    .hero h2 {
-        font-size: 32px;
+    
+    /* إظهار القائمة عند الضغط */
+    .nav-menu.active {
+        display: flex;
     }
-
-    .hero p {
-        font-size: 17px;
+    
+    .nav-menu > li > a {
+        padding: 12px 15px;
+        font-size: 16px;
+        width: 100%;
+        justify-content: flex-start;
     }
-}
-
-@media (max-width: 600px) {
+    
+    /* القوائم المنسدلة على الجوال */
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        background: #f7fafc;
+        border-radius: 10px;
+        margin-top: 5px;
+        padding: 5px 0;
+    }
+    
+    body.dark-mode .dropdown-menu {
+        background: #0d1117;
+    }
+    
+    .dropdown-menu li a {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+    
+    /* تصغير الأزرار */
+    .login-btn {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .theme-btn {
+        font-size: 20px;
+        padding: 4px 8px;
+    }
+    
+    /* تصغير القسم الترحيبي */
     .hero {
         padding: 50px 0 40px;
     }
-
+    
     .hero h2 {
         font-size: 26px;
     }
-
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .hero .btn-primary {
+        padding: 12px 30px;
+        font-size: 17px;
+    }
+    
+    /* تصغير العناوين */
+    .about h2,
+    .reviews h2,
+    .subjects-highlight h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    
     .about-grid,
     .reviews-grid,
     .subjects-grid {
         grid-template-columns: 1fr;
     }
+}
 
-    .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        padding-right: 20px;
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 16px;
     }
-
-    body.dark-mode .dropdown-menu {
-        background: transparent;
+    
+    .logo span {
+        font-size: 14px;
     }
-
-    .dropdown-menu li a {
-        padding: 6px 15px;
+    
+    .login-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .hero h2 {
+        font-size: 22px;
+    }
+    
+    .hero p {
         font-size: 14px;
     }
 }

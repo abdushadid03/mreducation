@@ -176,12 +176,22 @@
 
 <header>
     <div class="container header-container">
+
+        <!-- الشعار -->
         <div class="logo">
-            <a href="index.html" style="text-decoration:none;"><h1>MR <span>التعليمية</span></h1></a>
+            <a href="index.html" style="text-decoration:none;">
+                <h1>MR<span>التعليمية</span></h1>
+            </a>
         </div>
+
+        <!-- زر القائمة للجوال -->
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- القوائم الرئيسية -->
         <nav>
-            <ul class="nav-menu">
-                <li><a href="index.html">الرئيسية</a></li>
+            <ul class="nav-menu" id="navMenu">
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-graduation-cap"></i> الصفوف <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
@@ -195,9 +205,41 @@
                         <li><a href="classes.html?grade=12">الصف الثاني عشر</a></li>
                     </ul>
                 </li>
+
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="subjects.html?subject=physics">الفيزياء</a></li>
+                        <li><a href="subjects.html?subject=chemistry">الكيمياء</a></li>
+                        <li><a href="subjects.html?subject=biology">الأحياء</a></li>
+                        <li><a href="subjects.html?subject=science">العلوم</a></li>
+                        <li><a href="subjects.html?subject=environmental">العلوم البيئية</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#about">عن الموقع</a></li>
+                <li><a href="#reviews">التقييمات</a></li>
             </ul>
         </nav>
-        <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+
+        <!-- زر الوضع الداكن/الفاتح -->
+        <button id="theme-toggle" class="theme-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- تسجيل الدخول / الملف الشخصي -->
+        <div class="auth-section">
+            <a href="login.html" class="login-btn" id="login-btn">
+                <i class="fas fa-user"></i> تسجيل الدخول
+            </a>
+            <div class="user-profile" id="user-profile" style="display:none;">
+                <span id="user-name">أحمد</span>
+                <a href="subscription.html" class="premium-badge">
+                    <i class="fas fa-crown"></i> اشتراك مميز
+                </a>
+            </div>
+        </div>
+
     </div>
 </header>
 
