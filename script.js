@@ -131,3 +131,44 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
         }
     });
 });
+// =============================================
+//           إصلاح القوائم المنسدلة على الجوال
+// =============================================
+
+// الحصول على جميع عناصر dropdown
+const dropdowns = document.querySelectorAll('.dropdown > a');
+
+dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('click', function(e) {
+        // فقط على الشاشات الصغيرة
+        if (window.innerWidth <= 768) {
+            e.preventDefault();
+            
+            // الحصول على القائمة المنسدلة التابعة لهذا العنصر
+            const menu = this.nextElementSibling;
+            
+            // إغلاق جميع القوائم الأخرى أولاً
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                if (m !== menu) {
+                    m.style.display = 'none';
+                }
+            });
+            
+            // تبديل عرض القائمة الحالية
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    });
+});
+
+// إغلاق القوائم عند الضغط خارجها
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-menu').forEach(m => {
+            m.style.display = 'none';
+        });
+    }
+});

@@ -753,3 +753,24 @@ footer p:first-child {
         font-size: 14px;
     }
 }
+/* ============================================= */
+/*     إصلاح القوائم المنسدلة على الجوال          */
+/* ============================================= */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        display: none !important;
+    }
+    
+    .dropdown-menu.show {
+        display: block !important;
+    }
+    
+    .dropdown > a {
+        cursor: pointer;
+    }
+    
+    .dropdown > a::after {
+        content: ' ▼';
+        font-size: 10px;
+    }
+}
