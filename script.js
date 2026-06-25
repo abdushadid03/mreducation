@@ -4,7 +4,6 @@
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-// التحقق من التفضيل المحفوظ
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
@@ -34,7 +33,6 @@ if (loggedUser) {
     userName.textContent = loggedUser;
 }
 
-// دالة تسجيل الخروج (يمكن إضافتها في أي مكان)
 function logout() {
     localStorage.removeItem('loggedUser');
     localStorage.removeItem('isPremium');
@@ -78,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (grade) {
         console.log(`📚 عرض محتوى الصف ${grade}`);
-        // يمكنك هنا توجيه المستخدم إلى محتوى الصف المطلوب
     }
 
     if (subject) {
@@ -104,71 +101,43 @@ function embedYouTube(videoId, containerId) {
         `;
     }
 }
-// =============================================
-//           قائمة الجوال
-// =============================================
-function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
-}
 
-// إغلاق القائمة عند الضغط خارجها
-document.addEventListener('click', function(event) {
-    const navMenu = document.getElementById('navMenu');
-    const menuToggle = document.querySelector('.menu-toggle');
-    
-    if (navMenu && !navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-        navMenu.classList.remove('active');
-    }
-});
-
-// إغلاق القائمة عند الضغط على رابط
-document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        const navMenu = document.getElementById('navMenu');
-        if (navMenu) {
-            navMenu.classList.remove('active');
-        }
-    });
-});
 // =============================================
 //           إصلاح القوائم المنسدلة على الجوال
 // =============================================
-
-// الحصول على جميع عناصر dropdown
-const dropdowns = document.querySelectorAll('.dropdown > a');
-
-dropdowns.forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
-        // فقط على الشاشات الصغيرة
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            
-            // الحصول على القائمة المنسدلة التابعة لهذا العنصر
-            const menu = this.nextElementSibling;
-            
-            // إغلاق جميع القوائم الأخرى أولاً
-            document.querySelectorAll('.dropdown-menu').forEach(m => {
-                if (m !== menu) {
-                    m.style.display = 'none';
-                }
-            });
-            
-            // تبديل عرض القائمة الحالية
-            if (menu.style.display === 'block') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'block';
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownLinks = document.querySelectorAll('.dropdown > a');
+    
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const menu = this.nextElementSibling;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.remove('show');
+                    }
+                });
+                
+                menu.classList.toggle('show');
             }
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                m.classList.remove('show');
+            });
         }
     });
 });
 
-// إغلاق القوائم عند الضغط خارجها
-document.addEventListener('click', function(e) {
-    if (!e.target.closest('.dropdown')) {
-        document.querySelectorAll('.dropdown-menu').forEach(m => {
-            m.style.display = 'none';
-        });
-    }
-});
+// =============================================
+//           زر فتح/إغلاق القائمة للجوال
+// =============================================
+function toggleMenu() {
+    const nav = document.getElementById('navMenu');
+    nav.classList.toggle('active');
+}

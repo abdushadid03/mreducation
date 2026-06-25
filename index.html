@@ -4,35 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>MR التعليمية - الرئيسية</title>
-    
-    <!-- الخطوط والأيقونات -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet"/>
-    
-    <!-- ربط ملف التنسيقات (تأكد من وجود الملف بنفس المجلد) -->
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-<!-- ========================== -->
-<!--       الهيدر والقوائم       -->
-<!-- ========================== -->
 <header>
     <div class="container header-container">
 
-        <!-- الشعار -->
         <div class="logo">
             <a href="index.html" style="text-decoration:none;">
                 <h1>MR<span>التعليمية</span></h1>
             </a>
         </div>
 
-        <!-- زر القائمة للجوال -->
         <button class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- القوائم الرئيسية -->
         <nav>
             <ul class="nav-menu" id="navMenu">
                 <li class="dropdown">
@@ -52,11 +43,11 @@
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="subjects.html?subject=physics">الفيزياء</a></li>
-                        <li><a href="subjects.html?subject=chemistry">الكيمياء</a></li>
-                        <li><a href="subjects.html?subject=biology">الأحياء</a></li>
-                        <li><a href="subjects.html?subject=science">العلوم</a></li>
-                        <li><a href="subjects.html?subject=environmental">العلوم البيئية</a></li>
+                        <li><a href="choose-grade.html?subject=physics">الفيزياء</a></li>
+                        <li><a href="choose-grade.html?subject=chemistry">الكيمياء</a></li>
+                        <li><a href="choose-grade.html?subject=biology">الأحياء</a></li>
+                        <li><a href="choose-grade.html?subject=science">العلوم</a></li>
+                        <li><a href="choose-grade.html?subject=environmental">العلوم البيئية</a></li>
                     </ul>
                 </li>
 
@@ -65,12 +56,10 @@
             </ul>
         </nav>
 
-        <!-- زر الوضع الداكن/الفاتح -->
         <button id="theme-toggle" class="theme-btn">
             <i class="fas fa-moon"></i>
         </button>
 
-        <!-- تسجيل الدخول / الملف الشخصي -->
         <div class="auth-section">
             <a href="login.html" class="login-btn" id="login-btn">
                 <i class="fas fa-user"></i> تسجيل الدخول
@@ -86,12 +75,8 @@
     </div>
 </header>
 
-<!-- ========================== -->
-<!--       المحتوى الرئيسي       -->
-<!-- ========================== -->
 <main>
 
-    <!-- القسم الترحيبي -->
     <section class="hero">
         <div class="container">
             <h2>مرحباً بك في <span>MR التعليمية</span></h2>
@@ -101,7 +86,6 @@
         </div>
     </section>
 
-    <!-- قسم عن الموقع والمعلم -->
     <section id="about" class="about">
         <div class="container">
             <h2><i class="fas fa-info-circle"></i> عن الموقع والمعلم</h2>
@@ -126,7 +110,6 @@
         </div>
     </section>
 
-    <!-- قسم التقييمات -->
     <section id="reviews" class="reviews">
         <div class="container">
             <h2><i class="fas fa-comments"></i> تقييمات الطلاب</h2>
@@ -147,7 +130,6 @@
         </div>
     </section>
 
-    <!-- قسم المواد العلمية -->
     <section class="subjects-highlight">
         <div class="container">
             <h2><i class="fas fa-microscope"></i> المواد العلمية</h2>
@@ -163,9 +145,6 @@
 
 </main>
 
-<!-- ========================== -->
-<!--          التذييل            -->
-<!-- ========================== -->
 <footer>
     <div class="container">
         <p>© 2026 MR التعليمية - جميع الحقوق محفوظة</p>
@@ -173,7 +152,6 @@
     </div>
 </footer>
 
-<!-- ربط ملف الجافا سكريبت -->
 <script src="script.js"></script>
 
 </body>

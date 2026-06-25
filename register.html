@@ -17,7 +17,6 @@
             justify-content: center;
             padding: 50px 25px;
         }
-        
         .register-box {
             background: white;
             padding: 50px 40px;
@@ -26,7 +25,6 @@
             max-width: 500px;
             width: 100%;
         }
-        
         .register-box h2 {
             text-align: center;
             color: #1a365d;
@@ -34,18 +32,15 @@
             font-weight: 800;
             margin-bottom: 10px;
         }
-        
         .register-box .subtitle {
             text-align: center;
             color: #718096;
             margin-bottom: 35px;
             font-size: 16px;
         }
-        
         .form-group {
             margin-bottom: 22px;
         }
-        
         .form-group label {
             display: block;
             margin-bottom: 8px;
@@ -53,7 +48,6 @@
             color: #2d3748;
             font-size: 15px;
         }
-        
         .form-group input {
             width: 100%;
             padding: 14px 18px;
@@ -63,13 +57,11 @@
             transition: all 0.3s;
             font-family: 'Tajawal', sans-serif;
         }
-        
         .form-group input:focus {
             outline: none;
             border-color: #38a169;
             box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.1);
         }
-        
         .btn-register-submit {
             width: 100%;
             padding: 16px;
@@ -83,26 +75,22 @@
             transition: all 0.3s;
             margin-top: 10px;
         }
-        
         .btn-register-submit:hover {
             background: #2f855a;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
         }
-        
         .register-footer {
             text-align: center;
             margin-top: 25px;
             padding-top: 25px;
             border-top: 2px solid #e2e8f0;
         }
-        
         .register-footer p {
             color: #718096;
             font-size: 15px;
             margin-bottom: 15px;
         }
-        
         .btn-login-link {
             display: inline-block;
             background: #2b6cb0;
@@ -114,38 +102,30 @@
             font-size: 16px;
             transition: all 0.3s;
         }
-        
         .btn-login-link:hover {
             background: #1a4f7a;
             transform: translateY(-2px);
         }
-        
         body.dark-mode .register-box {
             background: #161b22;
         }
-        
         body.dark-mode .register-box h2 {
             color: #f0f6fc;
         }
-        
         body.dark-mode .form-group label {
             color: #c9d1d9;
         }
-        
         body.dark-mode .form-group input {
             background: #0d1117;
             border-color: #30363d;
             color: #e6edf3;
         }
-        
         body.dark-mode .form-group input:focus {
             border-color: #58a6ff;
         }
-        
         body.dark-mode .register-footer {
             border-top-color: #30363d;
         }
-        
         @media (max-width: 600px) {
             .register-box { padding: 35px 25px; }
             .register-box h2 { font-size: 26px; }
@@ -157,19 +137,16 @@
 <header>
     <div class="container header-container">
 
-        <!-- الشعار -->
         <div class="logo">
             <a href="index.html" style="text-decoration:none;">
                 <h1>MR<span>التعليمية</span></h1>
             </a>
         </div>
 
-        <!-- زر القائمة للجوال -->
         <button class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- القوائم الرئيسية -->
         <nav>
             <ul class="nav-menu" id="navMenu">
                 <li class="dropdown">
@@ -189,25 +166,23 @@
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="subjects.html?subject=physics">الفيزياء</a></li>
-                        <li><a href="subjects.html?subject=chemistry">الكيمياء</a></li>
-                        <li><a href="subjects.html?subject=biology">الأحياء</a></li>
-                        <li><a href="subjects.html?subject=science">العلوم</a></li>
-                        <li><a href="subjects.html?subject=environmental">العلوم البيئية</a></li>
+                        <li><a href="choose-grade.html?subject=physics">الفيزياء</a></li>
+                        <li><a href="choose-grade.html?subject=chemistry">الكيمياء</a></li>
+                        <li><a href="choose-grade.html?subject=biology">الأحياء</a></li>
+                        <li><a href="choose-grade.html?subject=science">العلوم</a></li>
+                        <li><a href="choose-grade.html?subject=environmental">العلوم البيئية</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#about">عن الموقع</a></li>
-                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="index.html#about">عن الموقع</a></li>
+                <li><a href="index.html#reviews">التقييمات</a></li>
             </ul>
         </nav>
 
-        <!-- زر الوضع الداكن/الفاتح -->
         <button id="theme-toggle" class="theme-btn">
             <i class="fas fa-moon"></i>
         </button>
 
-        <!-- تسجيل الدخول / الملف الشخصي -->
         <div class="auth-section">
             <a href="login.html" class="login-btn" id="login-btn">
                 <i class="fas fa-user"></i> تسجيل الدخول
@@ -222,6 +197,13 @@
 
     </div>
 </header>
+
+<div class="page-back-wrapper">
+    <a href="index.html" class="back-btn-generic">
+        <i class="fas fa-home"></i> العودة للصفحة الرئيسية
+    </a>
+</div>
+
 <div class="register-container">
     <div class="register-box">
         <h2><i class="fas fa-user-plus"></i> إنشاء حساب جديد</h2>
@@ -232,22 +214,18 @@
                 <label for="name"><i class="fas fa-user"></i> الاسم الكامل</label>
                 <input type="text" id="name" placeholder="أدخل اسمك الكامل" required>
             </div>
-            
             <div class="form-group">
                 <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني</label>
                 <input type="email" id="email" placeholder="example@email.com" required>
             </div>
-            
             <div class="form-group">
                 <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
                 <input type="password" id="password" placeholder="••••••••" minlength="6" required>
             </div>
-            
             <div class="form-group">
                 <label for="confirmPassword"><i class="fas fa-lock"></i> تأكيد كلمة المرور</label>
                 <input type="password" id="confirmPassword" placeholder="••••••••" required>
             </div>
-            
             <button type="submit" class="btn-register-submit">
                 <i class="fas fa-user-plus"></i> إنشاء الحساب
             </button>
@@ -273,33 +251,23 @@
 <script>
     document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        
         if (password !== confirmPassword) {
             showMessage('كلمتا المرور غير متطابقتين', 'error');
             return;
         }
-        
-        // التحقق من عدم وجود البريد مسجلاً مسبقاً
         const users = JSON.parse(localStorage.getItem('users') || '[]');
         if (users.find(u => u.email === email)) {
             showMessage('البريد الإلكتروني مسجل مسبقاً', 'error');
             return;
         }
-        
-        // حفظ المستخدم الجديد
         users.push({ name, email, password });
         localStorage.setItem('users', JSON.stringify(users));
-        
         showMessage('تم إنشاء الحساب بنجاح! يمكنك الآن تسجيل الدخول', 'success');
-        
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 2000);
+        setTimeout(() => { window.location.href = 'login.html'; }, 2000);
     });
 </script>
 

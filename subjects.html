@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style.css"/>
     
     <style>
+        /* التنسيقات العلوية والأساسية لصفحة المواد */
         .page-header {
             background: linear-gradient(145deg, #1a365d, #2b6cb0);
             color: white;
@@ -23,13 +24,8 @@
             font-weight: 800;
             margin-bottom: 12px;
         }
-        .page-header h2 span {
-            color: #fbd38d;
-        }
-        .page-header p {
-            font-size: 18px;
-            opacity: 0.9;
-        }
+        .page-header h2 span { color: #fbd38d; }
+        .page-header p { font-size: 18px; opacity: 0.9; }
         
         .content-container {
             max-width: 1000px;
@@ -37,393 +33,224 @@
             padding: 0 25px;
         }
         
+        /* سطر التحكم الموزع (العودة يمين، بار المواد يسار) */
+        .controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 35px;
+            flex-wrap: wrap-reverse;
+        }
+
+        /* زر العودة للقائمة الرئيسية */
+        .back-btn-generic {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #f0f4f8;
+            color: #1a365d;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid #cbd5e1;
+            transition: all 0.3s;
+        }
+        .back-btn-generic:hover {
+            background: #cbd5e1;
+            color: #0f172a;
+        }
+
+        /* بار المواد الصغير المطور في الثيم الفاتح */
+        .subjects-nav-bar {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+        .subjects-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .subjects-nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .subjects-nav-links a:hover { background: #e2e8f0; }
+        .subjects-nav-links a.active-nav-item {
+            background: #2b6cb0;
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        }
+
+        /* تصميم الكروت في الوضع الفاتح */
         .section-box {
             border-radius: 20px;
-            padding: 35px;
             margin-bottom: 35px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            background: #f8fafc; 
+            border: 3px solid #38a169;
         }
-        
-        .free-section {
-            background: #f0fff4;
-            border: 2px solid #38a169;
-        }
-        
-        .premium-section {
-            background: #fffff0;
-            border: 2px solid #f6ad55;
-        }
-        
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px dashed #cbd5e0;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .section-header h3 {
-            font-size: 24px;
-            font-weight: 800;
-            color: #1a365d;
-        }
-        
-        .badge {
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 700;
-            color: white;
-        }
-        
-        .badge-free {
+            padding: 20px 25px;
             background: #38a169;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
         }
+        .section-header h3 { font-size: 22px; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px; }
+        .section-header .toggle-icon { font-size: 20px; transition: transform 0.3s; }
+        .section-header.active .toggle-icon { transform: rotate(180deg); }
+        .badge { padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 700; background: white; color: #38a169; }
         
-        .badge-premium {
-            background: #f6ad55;
-            color: #1a202c;
-        }
+        .section-content { display: none; padding: 25px; background: #f8fafc; }
+        .section-content.show { display: block; }
+        .unit-list { background: #f8fafc; border-radius: 15px; }
         
-        .unit-list {
-            background: white;
-            border-radius: 15px;
+        .unit-item { padding: 20px; margin-bottom: 15px; background: #f8fafc; border-radius: 12px; }
+        .unit-title { color: #1a365d; font-size: 18px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; padding: 12px; background: #e2e8f0; border-radius: 10px; }
+        .lessons-list { display: flex; flex-direction: column; gap: 10px; }
+        
+        /* كروت الدروس والامتحانات الداخلية للوضع الفاتح */
+        .lesson-item { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .lesson-title { color: #334155; font-size: 15px; font-weight: 600; }
+        
+        /* أزرار المشاهدة وقريباً باللون البرتقالي */
+        .btn-watch { background: #2b6cb0; color: white; padding: 8px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 13px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s; }
+        .btn-watch:hover { background: #1a365d; }
+        .btn-watch.coming-soon { background: #dd6b20 !important; color: #ffffff !important; } 
+        .btn-watch.coming-soon:hover { background: #c05621 !important; }
+
+        /* صندوق الاشتراك المميز */
+        .premium-section-custom {
+            background: #e28743;
+            border-radius: 24px;
             overflow: hidden;
+            border: none;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-        
-        .unit-item {
-            padding: 25px;
-            border-bottom: 1px solid #edf2f7;
-            transition: all 0.2s;
-        }
-        
-        .unit-item:hover {
-            background: #f7fafc;
-        }
-        
-        .unit-item:last-child {
-            border-bottom: none;
-        }
-        
-        .unit-item.exam-section {
-            background: #f0fff4;
-        }
-        
-        .unit-item.exam-section:hover {
-            background: #c6f6d5;
-        }
-        
-        .unit-title {
-            color: #1a365d;
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .lessons-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding-right: 20px;
-        }
-        
-        .lesson-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 15px;
-            background: #f7fafc;
-            border-radius: 10px;
-            transition: all 0.2s;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .lesson-item:hover {
-            background: #edf2f7;
-            transform: translateX(-5px);
-        }
-        
-        .lesson-title {
-            color: #2d3748;
-            font-size: 15px;
-            font-weight: 600;
-        }
-        
-        .btn-watch {
-            background: #2b6cb0;
+        .premium-header-custom {
+            background: #c96d0c;
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 13px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .btn-watch:hover {
-            background: #1a4f7a;
-            transform: scale(1.05);
-        }
-        
-        .btn-watch.coming-soon {
-            background: #f6ad55;
-            color: #1a202c;
-        }
-        
-        .btn-watch.coming-soon:hover {
-            background: #ed8936;
-        }
-        
-        /* قسم الامتحانات */
-        .exams-section {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 3px dashed #cbd5e0;
-        }
-        
-        .exams-section h4 {
-            color: #1a365d;
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .exam-list {
-            display: grid;
-            gap: 15px;
-        }
-        
-        .exam-item {
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 20px;
-            background: linear-gradient(135deg, #f0fff4, #c6f6d5);
-            border-radius: 12px;
-            border: 2px solid #38a169;
-            transition: all 0.3s;
         }
+        .premium-header-custom h3 { font-size: 22px; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px; }
+        .badge-premium-custom { background: white; color: #c96d0c; padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 13px; }
         
-        .exam-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(56, 161, 105, 0.2);
-        }
+        .premium-body-custom { padding: 30px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0 0 24px 24px; }
+        .alert-info-custom { background: #e0f2fe; color: #0369a1; padding: 12px 20px; border-radius: 12px; font-size: 14px; margin-bottom: 25px; display: flex; align-items: center; gap: 10px; border: 1px solid #bae6fd; }
         
-        .exam-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .premium-cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card-premium-item { background: #f8fafc; padding: 25px 20px; border-radius: 18px; text-align: center; border: 1px solid #e2e8f0; }
+        .card-premium-item i { font-size: 36px; color: #b45309; margin-bottom: 15px; }
+        .card-premium-item h4 { font-size: 18px; font-weight: 700; color: #b45309; margin: 0 0 8px 0; }
+        .card-premium-item p { font-size: 13px; color: #64748b; margin: 0; }
         
-        .exam-icon {
-            width: 45px;
-            height: 45px;
-            background: #38a169;
-            border-radius: 10px;
+        .btn-subscribe-custom { display: inline-block; background: #d97706; color: #ffffff; padding: 14px 45px; border-radius: 30px; font-weight: 800; font-size: 16px; text-decoration: none; box-shadow: 0 5px 15px rgba(217, 119, 6, 0.3); }
+
+        /* تنسيقات الملف الشخصي وزر تسجيل الخروج الدائري للفاتح */
+        .user-profile { display: flex; align-items: center; gap: 12px; }
+        .user-name-style { font-weight: 700; color: #1a365d; font-size: 14px; }
+        .logout-btn-round {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #dc2626;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
-        }
-        
-        .exam-title {
-            color: #276749;
-            font-size: 16px;
-            font-weight: 700;
-        }
-        
-        .exam-desc {
-            color: #718096;
-            font-size: 13px;
-            margin-top: 3px;
-        }
-        
-        .premium-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .feature-card i {
-            font-size: 40px;
-            color: #f6ad55;
-            margin-bottom: 12px;
-        }
-        
-        .feature-card h4 {
-            color: #1a365d;
-            margin-bottom: 8px;
-        }
-        
-        .feature-card p {
-            font-size: 14px;
-            color: #718096;
-        }
-        
-        .btn-subscribe {
-            display: inline-block;
-            background: #f6ad55;
-            color: #1a202c;
-            padding: 14px 40px;
-            border-radius: 30px;
+            cursor: pointer;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 18px;
-            margin-top: 20px;
             transition: all 0.3s;
         }
-        
-        .btn-subscribe:hover {
-            background: #ed8936;
-            transform: translateY(-3px) scale(1.03);
+        .logout-btn-round:hover { background: #dc2626; color: white; }
+
+        /* ========================================================
+           تنسيقات الوضع الداكن (Dark Mode)
+           ======================================================== */
+        body.dark-mode {
+            background-color: #0d1117 !important;
+            color: #c9d1d9 !important;
         }
-        
-        .grades-notice {
-            background: linear-gradient(135deg, #ebf8ff, #bee3f8);
-            border: 2px solid #4299e1;
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #2b6cb0;
-            font-weight: 600;
+        body.dark-mode header {
+            background-color: #161b22 !important;
+            border-bottom: 1px solid #30363d !important;
         }
-        
-        .grades-notice i {
-            font-size: 24px;
+        body.dark-mode header h1, body.dark-mode header a {
+            color: #ffffff !important;
         }
-        
-        /* الوضع الداكن */
-        body.dark-mode .section-box {
-            background: #161b22;
-            border: 1px solid #30363d;
-        }
-        
-        body.dark-mode .free-section {
-            background: #0d2818;
-            border-color: #38a169;
-        }
-        
-        body.dark-mode .premium-section {
-            background: #2d2006;
-            border-color: #f6ad55;
-        }
-        
-        body.dark-mode .section-header h3 {
-            color: #f0f6fc;
-        }
-        
-        body.dark-mode .unit-list {
-            background: #0d1117;
-        }
-        
-        body.dark-mode .unit-item {
-            background: #0d1117;
-            border-bottom-color: #30363d;
-        }
-        
-        body.dark-mode .unit-item:hover {
-            background: #1f2937;
-        }
-        
-        body.dark-mode .unit-item.exam-section {
-            background: #1a362e;
-        }
-        
-        body.dark-mode .unit-item.exam-section:hover {
-            background: #2d4a3f;
-        }
-        
-        body.dark-mode .unit-title {
-            color: #f0f6fc;
-        }
-        
-        body.dark-mode .lesson-item {
-            background: #1a202c;
-        }
-        
-        body.dark-mode .lesson-item:hover {
-            background: #2d3748;
-        }
-        
-        body.dark-mode .lesson-title {
-            color: #e6edf3;
-        }
-        
-        body.dark-mode .feature-card {
-            background: #0d1117;
+        body.dark-mode .back-btn-generic {
+            background: #21262d;
+            color: #c9d1d9;
             border-color: #30363d;
         }
+        body.dark-mode .back-btn-generic:hover { background: #30363d; color: #ffffff; }
         
-        body.dark-mode .feature-card h4 {
-            color: #f0f6fc;
-        }
+        body.dark-mode .subjects-nav-bar { background: #161b22; border-color: #30363d; }
+        body.dark-mode .subjects-nav-links a { background: #21262d; color: #c9d1d9; }
+        body.dark-mode .subjects-nav-links a:hover { background: #30363d; }
+        body.dark-mode .subjects-nav-links a.active-nav-item { background: #2b6cb0; color: #ffffff; }
+
+        body.dark-mode .section-box { background: #11141a; }
+        body.dark-mode .section-content { background: #11141a; }
+        body.dark-mode .unit-list { background: #11141a; }
+        body.dark-mode .unit-item { background: #11141a; }
+        body.dark-mode .unit-title { color: #ffffff; background: #1e2530; }
+        body.dark-mode .lesson-item { background: #1e2530; border-color: #2d3748; }
+        body.dark-mode .lesson-title { color: #f0f6fc; }
         
-        body.dark-mode .exam-item {
-            background: linear-gradient(135deg, #1a362e, #2d4a3f);
-            border-color: #38a169;
-        }
+        body.dark-mode .btn-watch.coming-soon { background: #dd6b20 !important; color: #ffffff !important; }
+
+        body.dark-mode .premium-body-custom { background: #161b22; border-color: #30363d; }
+        body.dark-mode .alert-info-custom { background: #1a426e; color: #91ccff; border-color: #2f5c8f; }
+        body.dark-mode .card-premium-item { background: #21262d; border-color: #30363d; }
+        body.dark-mode .card-premium-item h4 { color: #fcc419; }
+        body.dark-mode .card-premium-item i { color: #fcc419; }
+        body.dark-mode .card-premium-item p { color: #8b949e; }
+        body.dark-mode .btn-subscribe-custom { background: #fcc419; color: #111827; box-shadow: 0 5px 15px rgba(252, 196, 25, 0.3); }
         
-        body.dark-mode .exam-title {
-            color: #9ae6b4;
-        }
-        
-        body.dark-mode .grades-notice {
-            background: linear-gradient(135deg, #1a365d, #2c5282);
-            border-color: #4299e1;
-            color: #90cdf4;
-        }
-        
-        @media (max-width: 600px) {
-            .page-header h2 { font-size: 28px; }
-            .section-box { padding: 25px 20px; }
-            .section-header { flex-direction: column; text-align: center; }
-        }
+        body.dark-mode .user-name-style { color: #ffffff; }
+        body.dark-mode .logout-btn-round { background: #21262d; border-color: #30363d; color: #ff7b72; }
+        body.dark-mode .logout-btn-round:hover { background: #ff7b72; color: white; }
     </style>
 </head>
 <body>
 
 <header>
     <div class="container header-container">
-
-        <!-- الشعار -->
         <div class="logo">
-            <a href="index.html" style="text-decoration:none;">
-                <h1>MR<span>التعليمية</span></h1>
-            </a>
+            <a href="index.html" style="text-decoration:none;"><h1>MR <span>التعليمية</span></h1></a>
         </div>
 
-        <!-- زر القائمة للجوال -->
         <button class="menu-toggle" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
 
-        <!-- القوائم الرئيسية -->
         <nav>
             <ul class="nav-menu" id="navMenu">
                 <li class="dropdown">
@@ -439,337 +266,320 @@
                         <li><a href="classes.html?grade=12">الصف الثاني عشر</a></li>
                     </ul>
                 </li>
-
                 <li class="dropdown">
                     <a href="#"><i class="fas fa-flask"></i> المواد <i class="fas fa-chevron-down"></i></a>
                     <ul class="dropdown-menu">
-                        <li><a href="subjects.html?subject=physics">الفيزياء</a></li>
-                        <li><a href="subjects.html?subject=chemistry">الكيمياء</a></li>
-                        <li><a href="subjects.html?subject=biology">الأحياء</a></li>
-                        <li><a href="subjects.html?subject=science">العلوم</a></li>
-                        <li><a href="subjects.html?subject=environmental">العلوم البيئية</a></li>
+                        <li><a href="#" onclick="navigateToSubject('physics'); return false;">الفيزياء</a></li>
+                        <li><a href="#" onclick="navigateToSubject('chemistry'); return false;">الكيمياء</a></li>
+                        <li><a href="#" onclick="navigateToSubject('biology'); return false;">الأحياء</a></li>
+                        <li><a href="#" onclick="navigateToSubject('science'); return false;">العلوم</a></li>
+                        <li><a href="#" onclick="navigateToSubject('environmental'); return false;">العلوم البيئية</a></li>
                     </ul>
                 </li>
-
-                <li><a href="#about">عن الموقع</a></li>
-                <li><a href="#reviews">التقييمات</a></li>
+                <li><a href="index.html#about"><i class="fas fa-info-circle"></i> عن الموقع</a></li>
+                <li><a href="index.html#reviews"><i class="fas fa-star"></i> التقييمات</a></li>
             </ul>
         </nav>
 
-        <!-- زر الوضع الداكن/الفاتح -->
-        <button id="theme-toggle" class="theme-btn">
-            <i class="fas fa-moon"></i>
+        <button id="theme-toggle" class="theme-btn" onclick="handleThemeToggle()">
+            <i class="fas fa-sun"></i>
         </button>
 
-        <!-- تسجيل الدخول / الملف الشخصي -->
         <div class="auth-section">
             <a href="login.html" class="login-btn" id="login-btn">
                 <i class="fas fa-user"></i> تسجيل الدخول
             </a>
             <div class="user-profile" id="user-profile" style="display:none;">
-                <span id="user-name">أحمد</span>
-                <a href="subscription.html" class="premium-badge">
-                    <i class="fas fa-crown"></i> اشتراك مميز
+                <span class="user-name-style" id="user-name">الطالب</span>
+                <a href="#" onclick="handleLogout(event)" class="logout-btn-round" title="تسجيل الخروج">
+                    <i class="fas fa-sign-out-alt"></i>
                 </a>
             </div>
         </div>
-
     </div>
 </header>
 
 <main>
     <div class="page-header">
         <div class="container">
-            <h2 id="subjectTitle">⚛️ <span>الفيزياء</span></h2>
+            <h2 id="subjectTitle">📚 <span id="subjectNameSpan">المادة</span> - الصف <span id="gradeTitle">--</span></h2>
             <p>جميع الدروس المسجلة وحلول الامتحانات مجانية بالكامل</p>
         </div>
     </div>
 
     <div class="content-container">
         
-        <!-- القسم المجاني -->
-        <div class="section-box free-section">
-            <div class="section-header">
-                <h3><i class="fas fa-book-open"></i> المكتبة المجانية</h3>
-                <span class="badge badge-free"><i class="fas fa-check-circle"></i> مجاني 100%</span>
+        <div class="controls-row">
+            <a href="index.html" class="back-btn-generic">
+                <i class="fas fa-arrow-right"></i> العودة للقائمة الرئيسية
+            </a>
+            <div class="subjects-nav-bar">
+                <ul class="subjects-nav-links" id="subjectsNavBarLinks"></ul>
             </div>
-
-            <div class="unit-list" id="unitsContainer">
-                <!-- سيتم ملء الوحدات تلقائياً -->
+        </div>
+        
+        <div class="section-box free-section">
+            <div class="section-header" onclick="toggleSection('libraryContent')">
+                <h3><i class="fas fa-book-open"></i> المكتبة المجانية</h3>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span class="badge"><i class="fas fa-check-circle"></i> مجاني 100%</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+            </div>
+            <div class="section-content show" id="libraryContent">
+                <div class="unit-list" id="unitsContainer"></div>
             </div>
         </div>
 
-        <!-- القسم المدفوع -->
-        <div class="section-box premium-section">
-            <div class="section-header">
+        <div class="section-box free-section">
+            <div class="section-header" onclick="toggleSection('examsContent')">
+                <h3><i class="fas fa-file-alt"></i> حل امتحانات السنوات السابقة</h3>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span class="badge"><i class="fas fa-check-circle"></i> مجاني 100%</span>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+            </div>
+            <div class="section-content show" id="examsContent">
+                <div class="unit-list" id="examsContainer"></div>
+            </div>
+        </div>
+
+        <div class="premium-section-custom">
+            <div class="premium-header-custom">
                 <h3><i class="fas fa-crown"></i> الحصص الأونلاين مع أ. محمد رشاد</h3>
-                <span class="badge badge-premium"><i class="fas fa-star"></i> اشتراك مميز</span>
+                <span class="badge-premium-custom"><i class="fas fa-star"></i> اشتراك مميز</span>
             </div>
-            
-            <div class="grades-notice">
-                <i class="fas fa-info-circle"></i>
-                <span>الحصص المباشرة متاحة للصفوف من <strong>9 إلى 12</strong> فقط</span>
-            </div>
-            
-            <p style="margin-bottom: 20px;">الحصص المباشرة متاحة لمادتي <strong>الفيزياء</strong> و <strong>العلوم</strong> للصفوف من التاسع إلى الثاني عشر</p>
-
-            <div class="premium-features">
-                <div class="feature-card">
-                    <i class="fas fa-video"></i>
-                    <h4>حصص مباشرة</h4>
-                    <p>تفاعل حي مع المعلم</p>
+            <div class="premium-body-custom">
+                <div class="alert-info-custom">
+                    <i class="fas fa-info-circle"></i> الحصص المباشرة تفاعلية ومتاحة لتغطية المناهج بالكامل خطوة بخطوة.
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-question-circle"></i>
-                    <h4>اسأل المعلم</h4>
-                    <p>اترك سؤالك وسيجيبك</p>
+                <div class="premium-cards-grid">
+                    <div class="card-premium-item">
+                        <i class="fas fa-video"></i>
+                        <h4>حصص مباشرة</h4>
+                        <p>تفاعل حي ومباشر</p>
+                    </div>
+                    <div class="card-premium-item">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>اسأل المعلم</h4>
+                        <p>إجابة مخصصة لاستفساراتك</p>
+                    </div>
+                    <div class="card-premium-item">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h4>اختبارات دورية</h4>
+                        <p>تقييم مستمر لمستواك</p>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h4>امتحانات خاصة</h4>
-                    <p>مسائل بعد كل حصة</p>
+                <div style="text-align: center;">
+                    <a href="subscription.html" class="btn-subscribe-custom"><i class="fas fa-crown"></i> اشترك الآن</a>
                 </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 25px;">
-                <a href="subscription.html" class="btn-subscribe">
-                    <i class="fas fa-crown"></i> اشترك الآن
-                </a>
             </div>
         </div>
 
     </div>
 </main>
 
-<footer>
-    <div class="container">
-        <p>© 2026 MR التعليمية - جميع الحقوق محفوظة</p>
-        <p>سلطنة عمان</p>
-    </div>
-</footer>
-
-<script src="script.js"></script>
 <script>
-    // بيانات الدروس والامتحانات
-    const lessonsData = {
-        physics: {
-            9: {
-                units: [
-                    {
-                        title: "الفصل الدراسي الأول",
-                        lessons: [
-                            { title: "الوحدة الأولى: الطول والزمن", videoId: "", available: false },
-                            { title: "الوحدة الثانية: الحركة", videoId: "", available: false },
-                            { title: "الوحدة الثالثة: الكتلة والوزن", videoId: "", available: false },
-                            { title: "الوحدة الرابعة: الكثافة", videoId: "", available: false },
-                            { title: "الوحدة الخامسة: نموذج الحركة الجزيئية البسيطة للمادة", videoId: "", available: false },
-                            { title: "الوحدة السادسة: المادة والخصائص الحرارية", videoId: "4DIMOnHo-WA", available: true },
-                            { title: "الوحدة السابعة: قياس درجة الحرارة", videoId: "", available: false },
-                            { title: "الوحدة الثامنة: الطاقة", videoId: "", available: false },
-                            { title: "الوحدة التاسعة: انتقال الطاقة", videoId: "", available: false },
-                            { title: "الوحدة العاشرة: التطبيقات والآثار المترتبة على نقل الطاقة الحرارية", videoId: "", available: false }
-                        ]
-                    },
-                    {
-                        title: "الفصل الدراسي الثاني",
-                        lessons: [
-                            { title: "الوحدة الحادية عشر: مصادر الطاقة", videoId: "", available: false },
-                            { title: "الوحدة الثانية عشر: انعكاس الضوء", videoId: "", available: false },
-                            { title: "الوحدة الثالثة عشر: انكسار الضوء", videoId: "", available: false },
-                            { title: "الوحدة الرابعة عشر: العدسات المحدبة الدقيقة", videoId: "", available: false },
-                            { title: "الوحدة الخامسة عشر: التيار وفرق الجهد والقوة الدافعة الكهربائية", videoId: "", available: false },
-                            { title: "الوحدة السادسة عشر: المقاومة", videoId: "", available: false }
-                        ]
-                    }
-                ],
-                exams: [
-                    { 
-                        title: "الامتحان القصير الاول ", 
-                        year: "للفصل الدراسي الاول", 
-                        videoId: "_iTzEWk25A8",  // ← ضع معرف الفيديو هنا
-                        available: true 
-                    },
-                    { 
-                        title: "امتحان الفصل الثاني", 
-                        year: "2024", 
-                        videoId: "VIDEO_ID_EXAM_2",  // ← ضع معرف الفيديو هنا
-                        available: false 
-                    },
-                    { 
-                        title: "امتحان الفصل الأول", 
-                        year: "2023", 
-                        videoId: "VIDEO_ID_EXAM_3",  // ← ضع معرف الفيديو هنا
-                        available: false 
-                    },
-                    { 
-                        title: "امتحان الفصل الثاني", 
-                        year: "2023", 
-                        videoId: "",  // ← رابط فارغ = غير متوفر
-                        available: false 
-                    }
+const contentData = {
+    physics: { name: 'الفيزياء', icon: '⚛️' },
+    chemistry: { name: 'الكيمياء', icon: '🧪' },
+    biology: { name: 'الأحياء', icon: '🧬' },
+    science: { name: 'العلوم', icon: '🔬' },
+    environmental: { name: 'العلوم البيئية', icon: '🌏' }
+};
+
+const subjectsByGradeMap = {
+    5: ['science'], 6: ['science'], 7: ['science'], 8: ['science'],
+    9: ['physics', 'chemistry', 'biology'], 10: ['physics', 'chemistry', 'biology'],
+    11: ['physics', 'chemistry', 'biology', 'environmental'], 
+    12: ['physics', 'chemistry', 'biology', 'environmental']
+};
+
+let globalGrade = 9;
+
+// =========================================
+// ✅ الدالة المعدلة: الانتقال للمادة مع الحفاظ على الصف الحالي
+// =========================================
+function navigateToSubject(subjectKey) {
+    window.location.href = `choose-grade.html?subject=${subjectKey}`;
+}
+function toggleMenu() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu) navMenu.classList.toggle('active');
+}
+
+function applySavedTheme() {
+    const body = document.body;
+    const themeBtnIcon = document.querySelector('#theme-toggle i');
+    const savedTheme = localStorage.getItem('userTheme');
+    
+    if (savedTheme === 'light') {
+        body.classList.remove('dark-mode');
+        if(themeBtnIcon) themeBtnIcon.className = 'fas fa-moon';
+    } else {
+        body.classList.add('dark-mode');
+        if(themeBtnIcon) themeBtnIcon.className = 'fas fa-sun';
+    }
+}
+
+function handleThemeToggle() {
+    const body = document.body;
+    const themeBtnIcon = document.querySelector('#theme-toggle i');
+    
+    if (body.classList.contains('dark-mode')) {
+        body.classList.remove('dark-mode');
+        themeBtnIcon.className = 'fas fa-moon';
+        localStorage.setItem('userTheme', 'light');
+    } else {
+        body.classList.add('dark-mode');
+        themeBtnIcon.className = 'fas fa-sun';
+        localStorage.setItem('userTheme', 'dark');
+    }
+}
+
+function checkUserLoginStatus() {
+    const loginBtn = document.getElementById('login-btn');
+    const userProfile = document.getElementById('user-profile');
+    const userName = document.getElementById('user-name');
+    const loggedUser = localStorage.getItem('loggedUser');
+
+    if (loggedUser) {
+        if(loginBtn) loginBtn.style.display = 'none';
+        if(userProfile) userProfile.style.display = 'flex';
+        if(userName) userName.textContent = loggedUser;
+    } else {
+        if(loginBtn) loginBtn.style.display = 'inline-block';
+        if(userProfile) userProfile.style.display = 'none';
+    }
+}
+
+function handleLogout(e) {
+    e.preventDefault();
+    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('loggedEmail');
+    localStorage.removeItem('isPremium');
+    location.reload();
+}
+
+function getLessonsForGrade(subjectName, grade, type) {
+    if (type === 'units') {
+        return [
+            {
+                title: 'الفصل الدراسي الأول',
+                lessons: [
+                    { title: `الوحدة الأولى: مقدمة في ${subjectName} للصف ${grade}`, videoId: '', available: false },
+                    { title: `الوحدة الثانية: المفاهيم الأساسية والتطبيقات`, videoId: '', available: false },
+                    { title: `درس تجريبي مجاني: شرح مراجعة الفصل الأول`, videoId: '4DIMOnHo-WA', available: true }
                 ]
             },
-            10: { units: [], exams: [] },
-            11: { units: [], exams: [] },
-            12: { units: [], exams: [] }
-        },
-        chemistry: {
-            9: { units: [], exams: [] },
-            10: { units: [], exams: [] },
-            11: { units: [], exams: [] },
-            12: { units: [], exams: [] }
-        },
-        biology: {
-            9: { units: [], exams: [] },
-            10: { units: [], exams: [] },
-            11: { units: [], exams: [] },
-            12: { units: [], exams: [] }
-        },
-        science: {
-            5: { units: [], exams: [] },
-            6: { units: [], exams: [] },
-            7: { units: [], exams: [] },
-            8: { units: [], exams: [] }
-        },
-        environmental: {
-            12: { units: [], exams: [] }
-        }
-    };
+            {
+                title: 'الفصل الدراسي الثاني',
+                lessons: [
+                    { title: `الوحدة الثالثة: الأنشطة والتجارب العلمية`, videoId: '', available: false },
+                    { title: `الوحدة الرابعة: المراجعة النهائية والاختبارات`, videoId: '', available: false }
+                ]
+            }
+        ];
+    } else {
+        return [
+            { title: `الامتحان التجريبي الأول - صف ${grade}`, year: '2025', videoId: '', available: false },
+            { title: `حل الامتحان النهائي الوزاري المحاكي`, year: '2024', videoId: '', available: false }
+        ];
+    }
+}
 
-    const subjectNames = {
-        physics: { icon: '⚛️', name: 'الفيزياء' },
-        chemistry: { icon: '🧪', name: 'الكيمياء' },
-        biology: { icon: '🧬', name: 'الأحياء' },
-        science: { icon: '🔬', name: 'العلوم' },
-        environmental: { icon: '🌍', name: 'العلوم البيئية' }
-    };
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section.classList.toggle('show');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    applySavedTheme();
+    checkUserLoginStatus();
 
     const params = new URLSearchParams(window.location.search);
-    const subject = params.get('subject');
-    const grade = parseInt(params.get('grade')) || 9;
+    let subject = params.get('subject') || 'physics';
+    globalGrade = parseInt(params.get('grade')) || 9;
+    
+    buildSubjectsNavBar(globalGrade, subject);
 
-    if (subject && subjectNames[subject]) {
-        const s = subjectNames[subject];
-        document.getElementById('subjectTitle').innerHTML = `${s.icon} <span>${s.name}</span> - الصف ${grade}`;
-    }
-
-    function displayUnits() {
-        const container = document.getElementById('unitsContainer');
-        const subjectData = lessonsData[subject];
+    if (contentData[subject]) {
+        const sInfo = contentData[subject];
+        document.getElementById('subjectTitle').innerHTML = `${sInfo.icon} <span>${sInfo.name}</span> - الصف <span>${globalGrade}</span>`;
         
-        if (!subjectData || !subjectData[grade] || (!subjectData[grade].units && !subjectData[grade].exams)) {
-            container.innerHTML = `
-                <div style="padding: 40px; text-align: center; color: #718096;">
-                    <i class="fas fa-clock" style="font-size: 48px; margin-bottom: 15px; opacity: 0.5;"></i>
-                    <p style="font-size: 18px;">سيتم إضافة الدروس قريباً</p>
-                </div>
-            `;
-            return;
-        }
-
-        const data = subjectData[grade];
-        
-        // عرض الوحدات
-        if (data.units && data.units.length > 0) {
-            data.units.forEach(unit => {
-                const unitDiv = document.createElement('div');
-                unitDiv.className = 'unit-item';
-                
-                let lessonsHTML = '';
-                unit.lessons.forEach(lesson => {
-                    if (lesson.available && lesson.videoId) {
-                        lessonsHTML += `
-                            <div class="lesson-item">
-                                <span class="lesson-title">${lesson.title}</span>
-                                <a href="https://www.youtube.com/watch?v=${lesson.videoId}" target="_blank" class="btn-watch">
-                                    <i class="fas fa-play-circle"></i> مشاهدة
-                                </a>
-                            </div>
-                        `;
-                    } else {
-                        lessonsHTML += `
-                            <div class="lesson-item">
-                                <span class="lesson-title">${lesson.title}</span>
-                                <a href="video-unavailable.html?subject=${subject}&grade=${grade}&type=lesson" class="btn-watch coming-soon">
-                                    <i class="fas fa-clock"></i> قريباً
-                                </a>
-                            </div>
-                        `;
-                    }
-                });
-                
-                unitDiv.innerHTML = `
-                    <div class="unit-title">
-                        <i class="fas fa-folder-open"></i>
-                        ${unit.title}
-                    </div>
-                    <div class="lessons-list">
-                        ${lessonsHTML}
-                    </div>
-                `;
-                
-                container.appendChild(unitDiv);
-            });
-        }
-
-        // عرض الامتحانات - مع روابط فيديو مخصصة لكل امتحان
-        if (data.exams && data.exams.length > 0) {
-            const examsSection = document.createElement('div');
-            examsSection.className = 'exams-section';
-            examsSection.innerHTML = `
-                <h4><i class="fas fa-file-alt"></i> حل امتحانات السنوات السابقة</h4>
-            `;
-            
-            const examList = document.createElement('div');
-            examList.className = 'exam-list';
-            
-            data.exams.forEach(exam => {
-                const examItem = document.createElement('div');
-                examItem.className = 'exam-item';
-                
-                // التحقق من توفر الفيديو الخاص بالامتحان
-                if (exam.available && exam.videoId) {
-                    examItem.innerHTML = `
-                        <div class="exam-info">
-                            <div class="exam-icon">
-                                <i class="fas fa-check"></i>
-                            </div>
-                            <div>
-                                <div class="exam-title">${exam.title} ${exam.year}</div>
-                                <div class="exam-desc">متوفر الآن</div>
-                            </div>
-                        </div>
-                        <a href="https://www.youtube.com/watch?v=${exam.videoId}" target="_blank" class="btn-watch">
-                            <i class="fas fa-play-circle"></i> مشاهدة
-                        </a>
-                    `;
-                } else {
-                    examItem.innerHTML = `
-                        <div class="exam-info">
-                            <div class="exam-icon" style="background: #f6ad55;">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div>
-                                <div class="exam-title">${exam.title} ${exam.year}</div>
-                                <div class="exam-desc">سيتم إضافته قريباً</div>
-                            </div>
-                        </div>
-                        <a href="video-unavailable.html?subject=${subject}&grade=${grade}&type=exam" class="btn-watch coming-soon">
-                            <i class="fas fa-clock"></i> قريباً
-                        </a>
-                    `;
-                }
-                
-                examList.appendChild(examItem);
-            });
-            
-            examsSection.appendChild(examList);
-            container.appendChild(examsSection);
-        }
+        displayUnits(getLessonsForGrade(sInfo.name, globalGrade, 'units'), subject, globalGrade);
+        displayExams(getLessonsForGrade(sInfo.name, globalGrade, 'exams'), subject, globalGrade);
     }
+});
 
-    displayUnits();
+function buildSubjectsNavBar(currentGrade, currentSubject) {
+    const navBarContainer = document.getElementById('subjectsNavBarLinks');
+    navBarContainer.innerHTML = '';
+    const availableSubjects = subjectsByGradeMap[currentGrade] || ['science'];
+    
+    availableSubjects.forEach(subKey => {
+        const subInfo = contentData[subKey];
+        if (subInfo) {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `subjects.html?subject=${subKey}&grade=${currentGrade}`;
+            a.innerHTML = `${subInfo.icon} ${subInfo.name}`;
+            if (subKey === currentSubject) a.className = 'active-nav-item';
+            li.appendChild(a);
+            navBarContainer.appendChild(li);
+        }
+    });
+}
+
+function displayUnits(units, subject, grade) {
+    const container = document.getElementById('unitsContainer');
+    container.innerHTML = '';
+    units.forEach(unit => {
+        const unitDiv = document.createElement('div');
+        unitDiv.className = 'unit-item';
+        unitDiv.innerHTML = `<div class="unit-title"><i class="fas fa-folder"></i> ${unit.title}</div>`;
+        const list = document.createElement('div');
+        list.className = 'lessons-list';
+        unit.lessons.forEach(lesson => {
+            const item = document.createElement('div');
+            item.className = 'lesson-item';
+            item.innerHTML = `<span class="lesson-title">${lesson.title}</span>`;
+            const btn = document.createElement('button');
+            if (lesson.available && lesson.videoId) {
+                btn.className = 'btn-watch';
+                btn.innerHTML = '<i class="fas fa-play-circle"></i> مشاهدة';
+                btn.onclick = () => window.open(`https://www.youtube.com/watch?v=${lesson.videoId}`, '_blank');
+            } else {
+                btn.className = 'btn-watch coming-soon';
+                btn.innerHTML = '<i class="fas fa-clock"></i> قريباً';
+                btn.onclick = () => window.location.href = `video-unavailable.html?subject=${subject}&grade=${grade}&type=video`;
+            }
+            item.appendChild(btn);
+            list.appendChild(item);
+        });
+        unitDiv.appendChild(list);
+        container.appendChild(unitDiv);
+    });
+}
+
+function displayExams(exams, subject, grade) {
+    const container = document.getElementById('examsContainer');
+    container.innerHTML = '';
+    const list = document.createElement('div');
+    list.className = 'lessons-list';
+    exams.forEach(exam => {
+        const item = document.createElement('div');
+        item.className = 'lesson-item';
+        item.innerHTML = `<span class="lesson-title">${exam.title} (${exam.year})</span>`;
+        const btn = document.createElement('button');
+        btn.className = 'btn-watch coming-soon';
+        btn.innerHTML = '<i class="fas fa-clock"></i> قريباً';
+        btn.onclick = () => window.location.href = `video-unavailable.html?subject=${subject}&grade=${grade}&type=exam`;
+        item.appendChild(btn);
+        list.appendChild(item);
+    });
+    container.appendChild(list);
+}
 </script>
-
 </body>
 </html>
