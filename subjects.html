@@ -10,6 +10,19 @@
     <link rel="stylesheet" href="style.css"/>
     
     <style>
+        /* دعم فتح القوائم المنسدلة (الصفوف/المواد) باللمس على الموبايل */
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown.dropdown-open > .dropdown-menu {
+            display: block;
+        }
+        @media (hover: hover) and (pointer: fine) {
+            .dropdown:hover > .dropdown-menu {
+                display: block;
+            }
+        }
+
         /* التنسيقات العلوية والأساسية لصفحة المواد */
         .page-header {
             background: linear-gradient(145deg, #1a365d, #2b6cb0);
@@ -237,6 +250,14 @@
         body.dark-mode .user-name-style { color: #ffffff; }
         body.dark-mode .logout-btn-round { background: #21262d; border-color: #30363d; color: #ff7b72; }
         body.dark-mode .logout-btn-round:hover { background: #ff7b72; color: white; }
+
+        /* لون كلمة "اشتراك مميز" في الهيدر: أسود في الفاتح، أبيض في الداكن */
+        .auth-section .premium-badge {
+            color: #000000 !important;
+        }
+        body.dark-mode .auth-section .premium-badge {
+            color: #ffffff !important;
+        }
     </style>
 </head>
 <body>
@@ -291,12 +312,14 @@
             </a>
             <div class="user-profile" id="user-profile" style="display:none;">
                 <span class="user-name-style" id="user-name">الطالب</span>
-                <a href="#" onclick="handleLogout(event)" class="logout-btn-round" title="تسجيل الخروج">
-                    <i class="fas fa-sign-out-alt"></i>
+                <a href="subscription.html" class="premium-badge">
+                    <i class="fas fa-crown"></i> اشتراك مميز
                 </a>
+                <button onclick="handleLogout(event)" class="logout-btn-round" title="تسجيل الخروج">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
             </div>
         </div>
-    </div>
 </header>
 
 <main>
@@ -408,6 +431,36 @@ function toggleMenu() {
     if (navMenu) navMenu.classList.toggle('active');
 }
 
+// ✅ دعم فتح القوائم المنسدلة (الصفوف/المواد) بالضغط على الموبايل
+function setupDropdownTouchSupport() {
+    document.querySelectorAll('.dropdown > a').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            const parentDropdown = this.parentElement;
+            const isOpen = parentDropdown.classList.contains('dropdown-open');
+
+            document.querySelectorAll('.dropdown.dropdown-open').forEach(function (d) {
+                if (d !== parentDropdown) d.classList.remove('dropdown-open');
+            });
+
+            if (!isOpen) {
+                e.preventDefault();
+                parentDropdown.classList.add('dropdown-open');
+            } else {
+                e.preventDefault();
+                parentDropdown.classList.remove('dropdown-open');
+            }
+        });
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown.dropdown-open').forEach(function (d) {
+                d.classList.remove('dropdown-open');
+            });
+        }
+    });
+}
+
 function applySavedTheme() {
     const body = document.body;
     const themeBtnIcon = document.querySelector('#theme-toggle i');
@@ -496,6 +549,7 @@ function toggleSection(sectionId) {
 document.addEventListener('DOMContentLoaded', function() {
     applySavedTheme();
     checkUserLoginStatus();
+    setupDropdownTouchSupport();
 
     const params = new URLSearchParams(window.location.search);
     let subject = params.get('subject') || 'physics';

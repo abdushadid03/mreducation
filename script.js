@@ -141,3 +141,43 @@ function toggleMenu() {
     const nav = document.getElementById('navMenu');
     nav.classList.toggle('active');
 }
+// =============================================
+//           إصلاح القوائم المنسدلة على الجوال
+// =============================================
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownLinks = document.querySelectorAll('.dropdown > a');
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                const menu = this.nextElementSibling;
+                
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.remove('show');
+                    }
+                });
+                
+                menu.classList.toggle('show');
+            }
+        });
+    });
+
+    // إغلاق القوائم عند الضغط خارجها
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                m.classList.remove('show');
+            });
+        }
+    });
+});
+
+// =============================================
+//           دالة تسجيل الخروج
+// =============================================
+function logout() {
+    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('isPremium');
+    location.reload();
+}
