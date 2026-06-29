@@ -181,3 +181,39 @@ function logout() {
     localStorage.removeItem('isPremium');
     location.reload();
 }
+// =============================================
+//      إصلاح فتح القوائم المنسدلة بالضغط على الجوال
+// =============================================
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownLinks = document.querySelectorAll('.dropdown > a');
+    
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // التحقق مما إذا كان المستخدم يتصفح من هاتف أو شاشة صغيرة
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); // منع الرابط من الانتقال لصفحة أخرى فوراً
+                
+                const menu = this.nextElementSibling; // القائمة المنسدلة (ul)
+                
+                // إغلاق أي قوائم منسدلة أخرى مفتوحة
+                document.querySelectorAll('.dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.remove('show');
+                    }
+                });
+                
+                // فتح أو إغلاق القائمة الحالية
+                menu.classList.toggle('show');
+            }
+        });
+    });
+
+    // إغلاق القائمة تلقائياً عند الضغط في أي مكان فارغ خارجها
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-menu').forEach(m => {
+                m.classList.remove('show');
+            });
+        }
+    });
+});
