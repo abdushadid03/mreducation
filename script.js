@@ -1,23 +1,43 @@
 // =============================================
 //           تبديل الوضع الداكن / الفاتح
 // =============================================
+// =============================================
+//           تبديل الوضع الداكن / الفاتح (نسخة موحدة)
+// =============================================
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-const savedTheme = localStorage.getItem('theme');
+// التحقق من الثيم المحفوظ عند تحميل الصفحة فوراً
+const savedTheme = localStorage.getItem('theme') || localStorage.getItem('userTheme');
 if (savedTheme === 'dark') {
     body.classList.add('dark-mode');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i') || themeToggle;
+        icon.className = 'fas fa-sun';
+    }
 } else {
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    body.classList.remove('dark-mode');
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i') || themeToggle;
+        icon.className = 'fas fa-moon';
+    }
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDark = body.classList.contains('dark-mode');
-    themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
+// تنفيذ التغيير فوراً عند الضغط بدون الحاجة لتحديث الصفحة
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        
+        // تغيير شكل الأيقونة فوراً
+        const icon = themeToggle.querySelector('i') || themeToggle;
+        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        
+        // حفظ القيمة في كلا المفتاحين لضمان التوافق مع كل الصفحات ومنع التضارب
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        localStorage.setItem('userTheme', isDark ? 'dark' : 'light');
+    });
+}
 
 // =============================================
 //           محاكاة تسجيل الدخول
